@@ -1,8 +1,25 @@
 package com.meuProjeto.enzoSpring.student;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+
+@Entity
+@Table
 public class Student {
+
+//    @SequenceGenerator(
+//            name="student_sequence",
+//            sequenceName = "student_sequence",
+//            allocationSize = 1
+//    )
+//    @GeneratedValue(
+//            strategy = GenerationType.SEQUENCE,
+//            generator = "student_sequence"
+//    )
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private LocalDate dob;
