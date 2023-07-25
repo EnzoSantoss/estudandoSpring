@@ -2,9 +2,7 @@ package com.meuProjeto.enzoSpring.student;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,8 +19,22 @@ public class StudentController {
     this.studentService = studentService;
     }
 
-    @GetMapping()
+    @GetMapping
     public List<Student> students(){
         return this.studentService.getStudentList();
     }
+
+    @PostMapping
+    public String createNewStudent(@RequestBody Student student){
+
+        try{
+            this.studentService.createStudent(student);
+            return "Usuario Criado";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "falha ao cadastrar um usuario";
+        }
+
+    }
+
 }
